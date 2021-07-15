@@ -11,11 +11,8 @@ public class StatsService {
     }
 
     public long averageSalesAmount(long[] sales) {
-        long sum = 0;
-        for (long num : sales) {
-            sum = sum + num;
-        }
-        return sum / sales.length;
+          long averageSalesAmount = allSalesAmount(sales) / sales.length;
+          return averageSalesAmount;
     }
 
     public int maxSales(long[] sales) {
@@ -49,7 +46,7 @@ public class StatsService {
     public long monthsWithSalesBelowAverage(long[] sales) {
         long sum = 0;
         for (long num : sales) {
-            if (num < 15) {
+            if (num < averageSalesAmount(sales)) {
                 sum = sum + 1;
             } else {
                 sum = sum;
@@ -61,7 +58,7 @@ public class StatsService {
     public long monthsWithSalesAboveAverage(long[] sales) {
         long sum = 0;
         for (long num : sales) {
-            if (num > 15) {
+            if (num > averageSalesAmount(sales)) {
                 sum = sum + 1;
             } else {
                 sum = sum;
